@@ -217,13 +217,11 @@ order by ParcelID;
 with RowNumCTE as 
 (
 select *,
-       row_number() over (
-	   partition by ParcelID,
-	                PropertyAddress,
-					SaleDate,
+       row_number() over (partition by ParcelID,
+	                              PropertyAddress,
+			               SaleDate,
 					LegalReference
-					order by 
-					      UniqueID) RowNum
+					order by UniqueID) RowNum
 from PortfolioProject..HousingData
 )
 select *
@@ -237,13 +235,11 @@ order by PropertyAddress
 with RowNumCTE as 
 (
 select *,
-       row_number() over (
-	   partition by ParcelID,
-	                PropertyAddress,
+       row_number() over (partition by ParcelID,
+	                                PropertyAddress,
 					SaleDate,
 					LegalReference
-					order by 
-					      UniqueID) RowNum
+					order by UniqueID) RowNum
 from PortfolioProject..HousingData
 )
 delete
